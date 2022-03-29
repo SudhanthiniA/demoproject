@@ -21,7 +21,7 @@ export class AppComponent {
    return this.msg;
  }
  onKey(event:any){
-   this.values =event.target.value + '|';
+   this.values =event.target.value ;
  }
 
 }
