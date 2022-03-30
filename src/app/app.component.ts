@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CustomerService } from './service/customer.service'
 
 @Component({
   selector: 'app-root',
@@ -7,21 +8,26 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'newdemo';
- msg:string;
- name:string;
- myusername:string;
- appArray:string[]=["Binding", "Display", "Services"];
- values:string='';
- 
- constructor(){
+  msg: string;
+  name: string;
+  myusername: string;
+  appArray: string[] = ["Binding", "Display", "Services"];
+  values: string = '';
+  customers: any;
 
- }
- clickEvent(){
-   this.msg="button is clicked";
-   return this.msg;
- }
- onKey(event:any){
-   this.values =event.target.value ;
- }
+  constructor(private service: CustomerService) {
+    this.service.getData().subscribe(data => {
+      this.customers = data;
+      console.log(data);
+    });
+  }
+
+  clickEvent() {
+    this.msg = "button is clicked";
+    return this.msg;
+  }
+  onKey(event: any) {
+    this.values = event.target.value;
+  }
 
 }

@@ -45,6 +45,33 @@
 <input type="text" (keyup)="onKey($event)">
 <p>{{values}}</p>
 <br>
+<table>
+<thead>
+<tr>
+  <th>#</th>
+<th>Name</th>
+<th>User Name</th>
+<th>Email</th>
+<th>Address</th>
+<th>Phone</th>
+<th>Website</th>
+<th>Company</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let item of customers">
+<td>{{item.id}}</td>
+<td>{{item.name}}</td>
+<td>{{item.username}}</td>
+<td>{{item.email}}</td>
+<td>{{item.address.street}}, {{item.address.suite}}, {{item.address.city}}, {{item.address.zipcode}}, {{item.address.geo.lat}}-{{item.address.geo.lng}}</td>
+<td>{{item.phone}}</td>
+<td>{{item.website}}</td>
+<td>{{item.company.name}}, {{item.company.catchPhrase}}, {{item.company.bs}}</td>
+
+</tr>
+</tbody>
+</table>
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
 
