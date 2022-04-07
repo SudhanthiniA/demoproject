@@ -45,6 +45,7 @@
 <input type="text" (keyup)="onKey($event)">
 <p>{{values}}</p>
 <br>
+<!-- <h4>Getting Data from API</h4>
 <table>
 <thead>
 <tr>
@@ -71,7 +72,50 @@
 
 </tr>
 </tbody>
-</table>
+</table> -->
+
+<h4>Show data based on dropdown selection</h4>
+<div>
+  <!-- <p><input type="text" (keyup)="applyFilter($any($event.target).value)"></p> -->
+  <!-- <select name="my-select" [(ngModel)]="mySelect" (change)="selectChange()">
+    <option [value]="item.id" *ngFor="let item of customers">{{item.username}}</option>
+  </select> -->
+  <br>
+   <select [ngModel]="selected" (ngModelChange)="applyFilter($event);">
+     <option value = "default">Select project</option>
+    <option  *ngFor="let item of allEmployees" [value]="item.username">{{item.username}}</option>
+  </select>
+  <!-- <select [(ngModel)]="mySelect" (change)="selectChange()">
+    <option [value]="item.id"  *ngFor="let item of customers">{{item.username}}</option>
+  </select> -->
+  <!-- <p>Selected Value: {{item.username}}</p> -->
+<table >
+  <thead>
+  <tr>
+    <th>#</th>
+  <th>Name</th>
+  <th>User Name</th>
+  <th>Email</th>
+  <th>Address</th>
+  <th>Phone</th>
+  <th>Website</th>
+  <th>Company</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr  *ngFor="let x of customers">
+  <td>{{x?.id}}</td>
+  <td>{{x?.name}}</td>
+  <td>{{x?.username}}</td>
+  <td>{{x?.email}}</td>
+  <td>{{x?.address.street}}, {{x?.address.suite}}, {{x?.address.city}}, {{x?.address.zipcode}}, {{x?.address.geo.lat}}-{{x?.address.geo.lng}}</td>
+  <td>{{x?.phone}}</td>
+  <td>{{x?.website}}</td>
+  <td>{{x?.company.name}}, {{x?.company.catchPhrase}}, {{x?.company.bs}}</td>
+  </tr>
+  </tbody>
+  </table>
+</div>
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
 
