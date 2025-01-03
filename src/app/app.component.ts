@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './service/customer.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,14 +18,10 @@ export class AppComponent implements OnInit{
   x:any;
   id:number;
   mySelect = '2';
-  selectedValue: any;
-  
-  yearSelected: any;
-  facultySelected: any;
-  
-  dropDownProjectName: string = '';
+  selectedValue: string ="Please Select";
+    
 
-  selected: string;
+  selected: string ="Please Select";
   selectedData: string;
 
   constructor(private service: CustomerService) {
@@ -40,10 +35,6 @@ export class AppComponent implements OnInit{
 	
   }
 
-  onSelect(val: any){
-    console.log(val);
-    this.selectedData = this.customers.filter((x:any) => x.value == val)
-  }
   // selectChange() {
   //    this.selectedValue=this.CustomerService.getDropDownText(this.mySelect, this.customers)[0].username;
    
@@ -80,11 +71,10 @@ export class AppComponent implements OnInit{
   onKey(event: any) {
     this.values = event.target.value;
   }
-  selectedHandlerProjectName(event : any)
-  {
-    if(event.target.value != 'default') { this.dropDownProjectName = event.target.value;}
-  }
+  
   ngOnInit() {
-    
+    console.log(this.selectedValue);
+    this.selectedValue = this.customers.find((c:any) => c.id === "");
+    this.allEmployees.get('username').setValue(this.selectedValue);
   }
-}
+  }
